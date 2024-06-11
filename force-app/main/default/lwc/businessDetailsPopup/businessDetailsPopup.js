@@ -10,6 +10,15 @@ export default class BusinessDetailsPopup extends LightningElement {
         this.isVisible = true;
     }
 
+    @api
+    toggle(business) {
+        if (this.isVisible === true) {
+            this.show(business);
+        } else {
+            this.closePopup();
+        }
+    }
+
     closePopup() {
         this.isVisible = false;
     }

@@ -245,11 +245,21 @@ export default class FilterAccountByBusinessCategory extends NavigationMixin(Lig
     this.refreshData();
   }
 
-  handleMouseOver(event) {
+  findAccount(event) {
     const accountId = event.target.dataset.id;
-    const account = this.accounts.find(acc => acc.Id === accountId);
+    return this.accounts.find(acc => acc.Id === accountId);
+  }
+
+  handleMouseOver(event) {
+    const account = this.findAccount(event);
     const popup = this.template.querySelector('c-business-details-popup');
     popup.show(account);
+  }
+
+  handleClick(event) {
+    const account = this.findAccount(event);
+    const popup = this.template.querySelector('c-business-details-popup');
+    popup.toggle(account);
   }
 
 }
